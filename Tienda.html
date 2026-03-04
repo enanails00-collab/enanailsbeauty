@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tienda Enanails</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>💕 Tienda Enanails 💕</h1>
+
+<div class="card">
+
+<h2>Press On Nails - $20.000</h2>
+
+<label>Forma</label>
+<select id="forma">
+<option>Coffin</option>
+<option>Almendras</option>
+</select>
+
+<label>Largo</label>
+<select id="largo">
+<option>Cortas</option>
+<option>Regulares</option>
+</select>
+
+<h3>Decoraciones</h3>
+<div id="decoraciones"></div>
+
+<label>Set completo</label>
+<select id="set">
+<option value="0">Ninguno</option>
+<option value="14000">Encapsulado 14000</option>
+<option value="12000">Babyboomer 12000</option>
+<option value="8000">French 8000</option>
+</select>
+
+<h2>Total actual: $<span id="total">20000</span></h2>
+
+<button onclick="agregar()">Agregar al carrito</button>
+
+<hr>
+
+<h2>Carrito</h2>
+<ul id="carrito"></ul>
+<h3>Total: $<span id="totalCarrito">0</span></h3>
+
+<button onclick="irAPago()">Finalizar compra</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
