@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pago</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+
+<h1>Finalizar Compra</h1>
+
+<h2>Total: $<span id="totalMostrar"></span></h2>
+
+<h3>Transferencia</h3>
+<p>Alias: macarenasch</p>
+<p>CVU: 0000003100036738121931</p>
+
+<button onclick="whatsapp()">Enviar comprobante por WhatsApp</button>
+
+<hr>
+
+<h3>Mercado Pago</h3>
+<a href="PONER_LINK_MP" target="_blank">
+<button>Pagar con Mercado Pago</button>
+</a>
+
+</div>
+
+<script>
+document.getElementById("totalMostrar").innerText = localStorage.getItem("totalCompra");
+
+function whatsapp(){
+let total = localStorage.getItem("totalCompra");
+let nombre = localStorage.getItem("nombre");
+
+let mensaje = `Hola Enanails 💕 Ya pagué.
+Nombre: ${nombre}
+Total: $${total}`;
+
+window.location.href = "https://wa.me/5491128568121?text=" + encodeURIComponent(mensaje);
+}
+</script>
+
+</body>
+</html>
