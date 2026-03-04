@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enanails Beauty</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="fondo">
+
+<div class="card">
+<h1>Enanails Beauty 💕</h1>
+<p>Bienvenida hermosa 💅</p>
+<form id="formIngreso">
+<input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+<input type="email" id="mail" placeholder="Mail" required>
+<input type="tel" id="telefono" placeholder="Teléfono" required>
+<button type="submit">Entrar a la tienda</button>
+</form>
+</div>
+
+<script>
+document.getElementById("formIngreso").addEventListener("submit", function(e){
+e.preventDefault();
+localStorage.setItem("nombre", nombre.value);
+localStorage.setItem("mail", mail.value);
+localStorage.setItem("telefono", telefono.value);
+window.location.href="tienda.html";
+});
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tienda Enanails</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>💕 Tienda Enanails 💕</h1>
+
+<div class="card">
+
+<h2>Press On Nails - $20.000</h2>
+
+<label>Forma</label>
+<select id="forma">
+<option>Coffin</option>
+<option>Almendras</option>
+</select>
+
+<label>Largo</label>
+<select id="largo">
+<option>Cortas</option>
+<option>Regulares</option>
+</select>
+
+<h3>Decoraciones</h3>
+<div id="decoraciones"></div>
+
+<label>Set completo</label>
+<select id="set">
+<option value="0">Ninguno</option>
+<option value="14000">Encapsulado 14000</option>
+<option value="12000">Babyboomer 12000</option>
+<option value="8000">French 8000</option>
+</select>
+
+<h2>Total actual: $<span id="total">20000</span></h2>
+
+<button onclick="agregar()">Agregar al carrito</button>
+
+<hr>
+
+<h2>Carrito</h2>
+<ul id="carrito"></ul>
+<h3>Total: $<span id="totalCarrito">0</span></h3>
+
+<button onclick="irAPago()">Finalizar compra</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+let precioBase = 20000;
+let totalActual = precioBase;
+let carrito = [];
+let totalCarrito = 0;
+
+let decoraciones = [
+{name:"Espejo", precio:1250},
+{name:"3D", precio:1500},
+{name:"Frances", precio:1050},
+{name:"Dijes", precio:1600}
+];
+
+let cont = document.getElementById("decoraciones");
+
+if(cont){
+decoraciones.forEach((d,i)=>{
+cont.innerHTML += `
+<div>
+${d.name} ($${d.precio})
+<input type="number" min="0" value="0" onchange="calcular()">
+</div>
+`;
+});
+}
+
+function calcular(){
+totalActual = precioBase;
+document.querySelectorAll("#decoraciones input").forEach((input,i)=>{
+totalActual += input.value * decoraciones[i].precio;
+});
+totalActual += parseInt(document.getElementById("set").value);
+document.getElementById("total").innerText = totalActual;
+}
+
+function agregar(){
+carrito.push(totalActual);
+totalCarrito += totalActual;
+
+document.getElementById("carrito").innerHTML += `<li>Set - $${totalActual}</li>`;
+document.getElementById("totalCarrito").innerText = totalCarrito;
+}
+
+function irAPago(){
+localStorage.setItem("totalCompra", totalCarrito);
+window.location.href="checkout.html";
+}<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pago</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+
+<h1>Finalizar Compra</h1>
+
+<h2>Total: $<span id="totalMostrar"></span></h2>
+
+<h3>Transferencia</h3>
+<p>Alias: macarenasch</p>
+<p>CVU: 0000003100036738121931</p>
+
+<button onclick="whatsapp()">Enviar comprobante por WhatsApp</button>
+
+<hr>
+
+<h3>Mercado Pago</h3>
+<a href="PONER_LINK_MP" target="_blank">
+<button>Pagar con Mercado Pago</button>
+</a>
+
+</div>
+
+<script>
+document.getElementById("totalMostrar").innerText = localStorage.getItem("totalCompra");
+
+function whatsapp(){
+let total = localStorage.getItem("totalCompra");
+let nombre = localStorage.getItem("nombre");
+
+let mensaje = `Hola Enanails 💕 Ya pagué.
+Nombre: ${nombre}
+Total: $${total}`;
+
+window.location.href = "https://wa.me/5491128568121?text=" + encodeURIComponent(mensaje);
+}
+</script>
+
+</body>body {
+font-family: Arial;
+background: linear-gradient(#ffd6e7,#ffffff);
+text-align:center;
+}
+
+.card {
+background:white;
+padding:30px;
+margin:40px auto;
+width:90%;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 0 20px #ffb6d9;
+}
+
+h1 {
+color:#ff69b4;
+}
+
+button {
+background:#ff69b4;
+color:white;
+border:none;
+padding:12px;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+}
+
+button:hover {
+background:#ff1493;
+}
+
+input, select {
+margin:8px;
+padding:8px;
+border-radius:10px;
+width:80%;
+}
+</html>
