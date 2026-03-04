@@ -1,0 +1,40 @@
+body {
+font-family: Arial;
+background: linear-gradient(#ffd6e7,#ffffff);
+text-align:center;
+}
+
+.card {
+background:white;
+padding:30px;
+margin:40px auto;
+width:90%;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 0 20px #ffb6d9;
+}
+
+h1 {
+color:#ff69b4;
+}
+
+button {
+background:#ff69b4;
+color:white;
+border:none;
+padding:12px;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+}
+
+button:hover {
+background:#ff1493;
+}
+
+input, select {
+margin:8px;
+padding:8px;
+border-radius:10px;
+width:80%;
+}
