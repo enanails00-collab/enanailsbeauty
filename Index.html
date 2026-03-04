@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Enanails Beauty</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="fondo">
+
+<div class="card">
+<h1>Enanails Beauty 💕</h1>
+<p>Bienvenida hermosa 💅</p>
+<form id="formIngreso">
+<input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+<input type="email" id="mail" placeholder="Mail" required>
+<input type="tel" id="telefono" placeholder="Teléfono" required>
+<button type="submit">Entrar a la tienda</button>
+</form>
+</div>
+
+<script>
+document.getElementById("formIngreso").addEventListener("submit", function(e){
+e.preventDefault();
+localStorage.setItem("nombre", nombre.value);
+localStorage.setItem("mail", mail.value);
+localStorage.setItem("telefono", telefono.value);
+window.location.href="tienda.html";
+});
+</script>
+</body>
+</html>
